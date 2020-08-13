@@ -17,14 +17,12 @@ A Python command line application for mathematics flash cards.
 - User can practice multiplication tables with flash cards (1x1 through 6x6)
 - User can see the number of cards in the session (default is all cards)
 - User can choose a smaller subset of cards
-- ...by entering a number between 1 and 5 in the command line
-- ...e.g. user types 5: session cards will be 1x1 through 5x5 (25 cards)
 - For each card, user sees the "front" of the card (question)
 - User can provide an answer and is then shown the "back" of the card (answer)
 - For each card, keeps track of how many times users have answered correctly and incorrectly
 - User can create new cards by providing two numbers and an answer
 - Model for Card (id Number, series Number, question String, answer String or Number, correct Number, incorrect Number)
-- id: 1 through 36 (37+ if users add cards)
+- id: 1 through n
 - series: 6 (this is the 6x1, 6x2,...6x n series)
 - question: '6x2'
 - answer: '12' or 12
@@ -55,5 +53,31 @@ A Python command line application for mathematics flash cards.
 
 ### Bronze
 
-- On load, a welcome message and directions display in the command line
-- Prompt: how many flashcards
+1. User runs a command to start the app
+2. Display welcome message with directions and prompt
+3. Prompt: How many flash cards? (Select Enter for all or a number < x)
+4. If user selects Enter, select all the flash cards from the dbase
+5. Else if user submits a number, check that number is less than row count
+6. If true, select x number of cards
+7. Else if false, display message and prompt
+8. Prompt: submit a number less than x or select enter for all cards
+9. Repeat steps 4 - 8 until user submits valid number or selects enter
+10. Display total flash cards number
+11. Display first flashcard question, card number (Card 1 of x), and prompt
+12. Prompt: submit a number to answer
+13. User submits number
+14. Check answer and update dbase for that card (correct or incorrect)
+15. If correct, display correct message and prompt
+16. Else if incorrect, display incorrect message and prompt
+17. Prompt: Press return or spacebar for next question
+18. Display next flashcard question, card number (Card 2 of x), and prompt
+19. Repeat steps 12 - 18 until all cards have been answered
+20. Display flash cards finished message and prompt
+21. Prompt: Start another session, end, or add flash card
+22. If start again, prompt step 3
+23. Else if end, display thank you and goodbye message
+24. Else if add, display message and prompt
+25. Prompt: provide two numbers to multiply and an answer like this: 8, 9, 72
+26. User submits three numbers separated by commas 8, 9, 72
+27. Update database and display success message and prompt
+28. Prompt: see steps 21 - 27
