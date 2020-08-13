@@ -5,17 +5,19 @@ db = PostgresqlDatabase('maths', user='postgres', password='', host='localhost',
 db.connect()
 
 # Models
+# Create a base model class which specifies our database
 class BaseModel(Model):
-	# A Meta class describes and configures another class
+	# Meta class describes and configures another class
 	class Meta:
 		database = db
 
+# Flash card model
 class Card(BaseModel):
-	id = CharField()
-	series = CharField()
+	# PeeWee creates primary key named “id”
+	series = IntegerField()
 	question = CharField()
 	answer = CharField()
-	correct = CharField()
-	incorrect = CharField()
+	correct = IntegerField()
+	incorrect = IntegerField()
 
-db.create_tables([Person, Pet])
+db.create_tables([Card])
