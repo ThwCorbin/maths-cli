@@ -10,3 +10,12 @@ class BaseModel(Model):
 	class Meta:
 		database = db
 
+class Card(BaseModel):
+	id = CharField()
+	series = CharField()
+	question = CharField()
+	answer = CharField()
+	correct = CharField()
+	incorrect = CharField()
+
+db.create_tables([Person, Pet])
