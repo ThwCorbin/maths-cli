@@ -15,34 +15,31 @@ A Python command line application for mathematics flash cards.
 ### Bronze: minimum viable product
 
 - User can practice multiplication tables with flash cards (1x1 through 6x6)
-- User can provide a name, which will be used as the Session instance
-- User can see the number of cards in the session (36 cards)
-- Or user can choose a smaller subset of cards
+- User can see the number of cards in the session (default is all cards)
+- User can choose a smaller subset of cards
 - ...by entering a number between 1 and 5 in the command line
 - ...e.g. user types 5: session cards will be 1x1 through 5x5 (25 cards)
-- User can see the number of cards user picked for the session
-- For each card, user sees the "front" of the card question
-- User can provide answer and is then shown the "back" of the card answer
-- For each card, keeps track of how many times a user has answered correctly and incorrectly in the session
-- User can create new cards
-- ...by entering a number between 7 and 9
-- ...e.g. user types 7, which will add 7x1 through 7x7 to the Session instance
-- Model for Session (card_id Number, card_line Number, card_name String, card_answer String or Number, correct Number, incorrect Number)
-- card_id: 1 through 36 (higher if user adds cards)
-- card_line: 6 (this is the 6 x n line)
-- card_name: '6x2'
-- card_answer: '12' or 12
+- For each card, user sees the "front" of the card (question)
+- User can provide an answer and is then shown the "back" of the card (answer)
+- For each card, keeps track of how many times users have answered correctly and incorrectly
+- User can create new cards by providing two numbers and an answer
+- Model for Card (id Number, series Number, question String, answer String or Number, correct Number, incorrect Number)
+- id: 1 through 36 (37+ if users add cards)
+- series: 6 (this is the 6x1, 6x2,...6x n series)
+- question: '6x2'
+- answer: '12' or 12
 - correct: 3
 - incorrect: 1
 
 ### Silver: looks and works better
 
-- User can practice multiplication tables with flash cards (1x1 through 12x12)
-- User can add 13, 14, and/or 15 lines (e.g. 15x12)
+- Increase number of flash cards (1x1 through 12x12)
+- When user creates a card, checks that the answer is valid before saving in the dbase
 
 ### Gold: bells and whistles
 
 - User can login and retrieve flash cards from previous sessions
+- For each card, keeps track of how many times a specific user has answered correctly and incorrectly
 - Update and delete cards
 - User can select just the multiples of one number (8x1, 8x2, 8x3...8xN)
 - User can get division, addition, and subtraction cards
@@ -57,3 +54,6 @@ A Python command line application for mathematics flash cards.
 ## Pseudocode
 
 ### Bronze
+
+- On load, a welcome message and directions display in the command line
+- Prompt: how many flashcards
