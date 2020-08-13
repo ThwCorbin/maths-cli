@@ -4,4 +4,9 @@ db = PostgresqlDatabase('maths', user='postgres', password='', host='localhost',
 
 db.connect()
 
+# Models
+class BaseModel(Model):
+	# A Meta class describes and configures another class
+	class Meta:
+		database = db
 
