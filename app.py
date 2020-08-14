@@ -1,17 +1,86 @@
+import random
 from model import *
+from seed import greatestFactor
+
+total_cards = greatestFactor ** 2
+
+def show_card(cards_shuffled):
+	correct = 0
+	incorrect = 0
+	
+	for card in cards_shuffled:
+		remaining_cards = len(cards_shuffled) - (cards_shuffled.index(card)+1)
+
+		user_answer = input(f'What is the product of {card.question}? ')
+		
+		# user_answer and card.answer are strings
+		if user_answer == card.answer:
+			card.correct+= 1
+			correct+= 1
+			# print('---------------------------')
+			print(f'''
+			---------------------------------------------
+			
+			         Correct! {card.answer} is the answer.
+			''')
+		else:
+			card.incorrect+= 1
+			incorrect+= 1
+			print(f'''
+			---------------------------------------------
+
+			         Incorrect. The answer is: {card.answer}
+			''')
+		print(f'''
+			---------------------------------------------
+			               Correct:   {correct}
+			               Incorrect: {incorrect}
+			               Remaining: {remaining_cards}
+			---------------------------------------------
+			''')
+#/show_card()
+
+def shuffle(cards_session):
+	random.shuffle(cards_session)
+	show_card(cards_session)
+#/shuffle()
 
 def get_cards(num_cards):
-	all_cards = Card.select().where(Card.id < int(num_cards) + 1)
-	for card in all_cards:
-		print(card.question)
+	if num_cards == '' or num_cards == ' ':
+		get_cards(total_cards)
+	elif int(num_cards) > total_cards:
+		print(f'There are {total_cards} flash cards. Please provide a valid number.')
+		begin_session()
+	else:
+		cards_session = [];
+		all_cards = Card.select().where(Card.id < int(num_cards) + 1)
+		for card in all_cards:
+			cards_session.append(card)
+		shuffle(cards_session)
+#/get_cards()
 
 def begin_session():
-	num_cards = input(f'How many flash cards? Enter number between 1 and 36: ')
-	print(f'Retrieving {num_cards} flash cards')
+	num_cards = input(f'How many flash cards? Enter number between 1 and {total_cards}: ')
+	print(f'''
+			---------------------------------------------
+			      Retrieving {num_cards} flash cards
+			---------------------------------------------
+	''')
 	get_cards(num_cards)
+#/begin_session()
 
 def main():
-	welcome_msg = 'Welcome to Maths-CLI. This is a flash card project to help you practice multiplication.'
+	welcome_msg = '''
+			---------------------------------------------
+			            Welcome to Maths-CLI!
+
+			        This app provides flash cards
+			     to help you practice multiplication
+	
+			---------------------------------------------
+	'''
 	print(welcome_msg)
 	begin_session()
+#/main()
+
 main()
