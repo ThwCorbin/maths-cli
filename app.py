@@ -4,6 +4,42 @@ from seed import greatestFactor
 
 total_cards = greatestFactor ** 2
 
+def goodbye():
+	goodbye_msg = f'''
+			---------------------------------------------
+			        We hope you learned a lot 
+			        about multiplication today!
+				   
+			               Goodbye!
+
+			---------------------------------------------
+	'''
+	print(goodbye_msg)
+
+def user_choices():
+	user_choices_msg = f'''
+			---------------------------------------------
+			       Would you like another session? 
+			             Enter "y" or "n"
+
+			---------------------------------------------
+	'''
+	user_add_card_msg = f'''
+			---------------------------------------------
+			    Would you like to create a flash card? 
+			             Enter "y" or "n"
+
+			---------------------------------------------
+	'''
+
+	user_choice = input(user_choices_msg)
+
+	if user_choice == "y":
+		user_add_card = input(user_add_card_msg)
+	else:
+		goodbye()
+#/user_choices()
+
 def session_finished(correct, num_flash_cards):
 	end_session_msg = f'''
 			---------------------------------------------
