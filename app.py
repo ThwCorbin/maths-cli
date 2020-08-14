@@ -7,14 +7,29 @@ total_cards = greatestFactor ** 2
 def goodbye():
 	goodbye_msg = f'''
 			---------------------------------------------
-			        We hope you learned a lot 
-			        about multiplication today!
+			          We hope you learned a lot 
+			         about multiplication today!
 				   
-			               Goodbye!
+			                  Goodbye!
 
 			---------------------------------------------
 	'''
 	print(goodbye_msg)
+
+def add_card():
+	add_card_msg = f'''
+			---------------------------------------------
+			      Enter two numbers to multiply and
+			      their product separated by commas.
+
+			              Example: 8, 9, 72
+
+			---------------------------------------------
+	'''
+	add_card_value = input(add_card_msg)
+	print(add_card_value)
+
+#/add_card()
 
 def user_choices():
 	user_choices_msg = f'''
@@ -36,6 +51,7 @@ def user_choices():
 
 	if user_choice == "y":
 		user_add_card = input(user_add_card_msg)
+		add_card()
 	else:
 		goodbye()
 #/user_choices()
@@ -51,6 +67,7 @@ def session_finished(correct, num_flash_cards):
 			---------------------------------------------
 	'''
 	print(end_session_msg)
+	user_choices()
 #/session_finished()
 
 def show_card(cards_shuffled):
