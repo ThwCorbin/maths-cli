@@ -4,14 +4,31 @@ from seed import greatestFactor
 
 total_cards = greatestFactor ** 2
 
+def session_finished(correct, num_flash_cards):
+	end_session_msg = f'''
+			---------------------------------------------
+			             Session complete!
+
+			    You answered {correct} flash cards correctly
+			          out of {num_flash_cards} flash cards
+	
+			---------------------------------------------
+	'''
+	print(end_session_msg)
+#/session_finished()
+
 def show_card(cards_shuffled):
 	correct = 0
 	incorrect = 0
+	num_flash_cards = len(cards_shuffled) 
 	
 	for card in cards_shuffled:
-		remaining_cards = len(cards_shuffled) - (cards_shuffled.index(card)+1)
+		remaining_cards = num_flash_cards - (cards_shuffled.index(card)+1)
 
-		user_answer = input(f'What is the product of {card.question}? ')
+		user_answer = input(f'''
+			    What is the product of {card.question}? 
+			---------------------------------------------
+			''')
 		
 		# user_answer and card.answer are strings
 		if user_answer == card.answer:
@@ -38,6 +55,7 @@ def show_card(cards_shuffled):
 			               Remaining: {remaining_cards}
 			---------------------------------------------
 			''')
+	session_finished(correct, num_flash_cards)
 #/show_card()
 
 def shuffle(cards_session):
@@ -60,7 +78,13 @@ def get_cards(num_cards):
 #/get_cards()
 
 def begin_session():
-	num_cards = input(f'How many flash cards? Enter number between 1 and {total_cards}: ')
+	num_cards = input(f'''
+			       How many flash cards would you 
+			       like for this practice session? 
+			       Enter a number between 1 and {total_cards}
+			---------------------------------------------
+			                      
+	''')
 	print(f'''
 			---------------------------------------------
 			      Retrieving {num_cards} flash cards
@@ -70,7 +94,7 @@ def begin_session():
 #/begin_session()
 
 def main():
-	welcome_msg = '''
+	welcome_msg = f'''
 			---------------------------------------------
 			            Welcome to Maths-CLI!
 
