@@ -11,14 +11,7 @@ def begin_session():
 	get_cards(num_cards)
 
 def main():
-	# welcome_msg = 'Welcome to Maths-CLI. This is a flash card project to help you practice multiplication.'
-	# set_up ='Set up: Install dependencies in the Pipfile with pipenv. Then enter "pipenv shell" in the terminal to create a virtual environment.'
-	# create_dbase = 'Create Database: Now open a separate terminal window enter "psql". At the =# prommpt, enter "CREATE DATABASE maths;"'
-	# seed_dbase = 'Seed Database: Back in the virtual environment terminal, enter "python3 seed.py"'
-	# print(welcome_msg)
-	# print(set_up)
-	# print(create_dbase)
-	# print(seed_dbase)
+	welcome_msg = 'Welcome to Maths-CLI. This is a flash card project to help you practice multiplication.'
+	print(welcome_msg)
 	begin_session()
-
 main()
