@@ -2,7 +2,7 @@
 
 A Python command line application providing mathematics flash cards to help a user practice multiplication.
 
-Repo:
+Repo: https://github.com/ThwCorbin/maths-cli
 
 ## Description
 
