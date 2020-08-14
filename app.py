@@ -1,24 +1,5 @@
 from model import *
 
-# import click
-# # https://click.palletsprojects.com/en/7.x/quickstart/
-
-# @click.command()
-# def hiya():
-# 	click.echo('Hiya luna!')
-
-# @click.command()
-# def main():
-# 	"""
-# 	This is a flash card project to help you with multiplication
-# 	"""
-# 	print(f'Flash cards')
-
-# if __name__ == '__main__':
-# 	# hiya()
-# 	main()
-
-
 def get_cards(num_cards):
 	all_cards = Card.select().where(Card.id < int(num_cards) + 1)
 	for card in all_cards:
