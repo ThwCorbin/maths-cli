@@ -22,13 +22,35 @@ def add_card():
 			      Enter two numbers to multiply and
 			      their product separated by commas.
 
-			              Example: 8, 9, 72
+			      The database already has questions
+			      for numbers 1 through 12. Consider
+			       adding a flashcard with the first
+			           number greater than 12.
+
+			              Example: 13, 3, 39
 
 			---------------------------------------------
 	'''
 	add_card_value = input(add_card_msg)
-	print(add_card_value)
+	new_card_arr = add_card_value.replace(" ", "").split(",")
+	series = int(new_card_arr[0])
+	question = f"{new_card_arr[0]} x {new_card_arr[1]}"
+	answer = new_card_arr[2]
+	new_card = Card(series=series, question=question, answer=answer, correct=0, incorrect=0)
+	new_card.save()
+	print(f'''
+			---------------------------------------------
+			           We added your flashcard
+			              to our database!
 
+			              Question: {question}
+			              Answer:   {answer}
+
+			              Lets start your
+			           next practice session.
+			---------------------------------------------
+	''')
+	begin_session()
 #/add_card()
 
 def user_choices():
@@ -51,7 +73,10 @@ def user_choices():
 
 	if user_choice == "y":
 		user_add_card = input(user_add_card_msg)
-		add_card()
+		if user_add_card == "y":
+			add_card()
+		else:
+			begin_session()
 	else:
 		goodbye()
 #/user_choices()
