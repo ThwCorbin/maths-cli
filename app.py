@@ -1,8 +1,8 @@
 import random
 from model import *
-from seed import greatestFactor
 
-total_cards = greatestFactor ** 2
+total_cards = Card.select().count()
+print(total_cards)
 
 def goodbye():
 	goodbye_msg = f'''
@@ -37,7 +37,7 @@ def add_card():
 	series = int(new_card_arr[0])
 	question = f"{new_card_arr[0]} x {new_card_arr[1]}"
 	answer = new_card_arr[2]
-	new_card = Card(series=series, question=question, answer=answer, correct=0, incorrect=0)
+	new_card = Card(series=series, question=question, answer=answer)
 	new_card.save()
 	
 	add_confirm_msg = f'''
@@ -105,15 +105,12 @@ def show_card(cards_shuffled):
 	
 	for card in cards_shuffled:
 		remaining_cards = num_flash_cards - (cards_shuffled.index(card)+1)
-
 		user_answer = input(f'''
 			    What is the product of {card.question}? 
 			---------------------------------------------
 			''')
 		
-		# user_answer and card.answer are strings
 		if user_answer == card.answer:
-			card.correct+= 1
 			correct+= 1
 			correct_msg = f'''
 			---------------------------------------------
@@ -122,7 +119,6 @@ def show_card(cards_shuffled):
 			'''
 			print(correct_msg)
 		else:
-			card.incorrect+= 1
 			incorrect+= 1
 			incorrect_msg = f'''
 			---------------------------------------------

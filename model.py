@@ -17,7 +17,5 @@ class Card(BaseModel):
 	series = IntegerField()
 	question = CharField()
 	answer = CharField()
-	correct = IntegerField()
-	incorrect = IntegerField()
 
 db.create_tables([Card])
