@@ -143,11 +143,10 @@ def shuffle(cards_session):
 #/shuffle()
 
 def get_cards(num_cards):
-	if num_cards == '' or num_cards == ' ':
-		get_cards(total_cards)
-	elif int(num_cards) > total_cards:
+	if int(num_cards) > total_cards:
 		invalid_msg = f'''
 			---------------------------------------------
+			                 Error
 			        There are {total_cards} flash cards.
 			       Please provide a valid number.
 			---------------------------------------------
@@ -170,6 +169,9 @@ def begin_session():
 			---------------------------------------------
 			                      
 	''')
+	if num_cards == "" or num_cards == " ":
+		num_cards = total_cards
+
 	retrieving_msg = f'''
 			---------------------------------------------
 			      Retrieving {num_cards} flash cards
