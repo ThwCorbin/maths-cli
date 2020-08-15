@@ -19,15 +19,13 @@ A Python command line application for mathematics flash cards.
 - User can choose a smaller subset of cards
 - For each card, user sees the "front" of the card (question)
 - User can provide an answer and is then shown the "back" of the card (answer)
-- For each card, keeps track of how many times users have answered correctly and incorrectly
+- Keeps track of how many times a user has answered correctly and incorrectly in a session
 - User can create new cards by providing two numbers and an answer
-- Model for Card (id Number, series Number, question String, answer String or Number, correct Number, incorrect Number)
-- id: 1 through n
+- Model for Card (id Number, series Number, question String, answer String or Number)
+- id: 1 through n (PeeWee creates primary key named “id”)
 - series: 6 (this is the 6x1, 6x2,...6x n series)
 - question: '6x2'
 - answer: '12' or 12
-- correct: 3
-- incorrect: 1
 
 ### Silver: looks and works better
 
@@ -37,7 +35,7 @@ A Python command line application for mathematics flash cards.
 ### Gold: bells and whistles
 
 - User can login and retrieve flash cards from previous sessions
-- For each card, keeps track of how many times a specific user has answered correctly and incorrectly
+- Keeps track of how many times a specific user has answered correctly and incorrectly over multiple sessions
 - Update and delete cards
 - User can select just the multiples of one number (8x1, 8x2, 8x3...8xN)
 - User can get division, addition, and subtraction cards
@@ -66,7 +64,7 @@ A Python command line application for mathematics flash cards.
 11. Display first flashcard question, card number (Card 1 of x), and prompt
 12. Prompt: submit a number to answer
 13. User submits number
-14. Check answer and update dbase for that card (correct or incorrect)
+14. Check answer
 15. If correct, display correct message and prompt
 16. Else if incorrect, display incorrect message and prompt
 17. Prompt: Press return or spacebar for next question
