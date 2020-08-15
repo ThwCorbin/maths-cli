@@ -33,12 +33,14 @@ def add_card():
 	'''
 	add_card_value = input(add_card_msg)
 	new_card_arr = add_card_value.replace(" ", "").split(",")
+
 	series = int(new_card_arr[0])
 	question = f"{new_card_arr[0]} x {new_card_arr[1]}"
 	answer = new_card_arr[2]
 	new_card = Card(series=series, question=question, answer=answer, correct=0, incorrect=0)
 	new_card.save()
-	print(f'''
+	
+	add_confirm_msg = f'''
 			---------------------------------------------
 			           We added your flashcard
 			              to our database!
@@ -49,7 +51,8 @@ def add_card():
 			              Lets start your
 			           next practice session.
 			---------------------------------------------
-	''')
+	'''
+	print(add_confirm_msg)
 	begin_session()
 #/add_card()
 
@@ -112,27 +115,29 @@ def show_card(cards_shuffled):
 		if user_answer == card.answer:
 			card.correct+= 1
 			correct+= 1
-			# print('---------------------------')
-			print(f'''
+			correct_msg = f'''
 			---------------------------------------------
 			
 			         Correct! {card.answer} is the answer.
-			''')
+			'''
+			print(correct_msg)
 		else:
 			card.incorrect+= 1
 			incorrect+= 1
-			print(f'''
+			incorrect_msg = f'''
 			---------------------------------------------
 
 			         Incorrect. The answer is: {card.answer}
-			''')
-		print(f'''
+			'''
+			print(incorrect_msg)
+		status_msg = f'''
 			---------------------------------------------
 			               Correct:   {correct}
 			               Incorrect: {incorrect}
 			               Remaining: {remaining_cards}
 			---------------------------------------------
-			''')
+			'''
+		print(status_msg)
 	session_finished(correct, num_flash_cards)
 #/show_card()
 
@@ -145,7 +150,13 @@ def get_cards(num_cards):
 	if num_cards == '' or num_cards == ' ':
 		get_cards(total_cards)
 	elif int(num_cards) > total_cards:
-		print(f'There are {total_cards} flash cards. Please provide a valid number.')
+		invalid_msg = f'''
+			---------------------------------------------
+			        There are {total_cards} flash cards.
+			       Please provide a valid number.
+			---------------------------------------------
+		'''
+		print(invalid_msg)
 		begin_session()
 	else:
 		cards_session = [];
@@ -163,11 +174,12 @@ def begin_session():
 			---------------------------------------------
 			                      
 	''')
-	print(f'''
+	retrieving_msg = f'''
 			---------------------------------------------
 			      Retrieving {num_cards} flash cards
 			---------------------------------------------
-	''')
+	'''
+	print(retrieving_msg)
 	get_cards(num_cards)
 #/begin_session()
 
