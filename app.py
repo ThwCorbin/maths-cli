@@ -143,7 +143,7 @@ def shuffle(cards_session):
 
 def get_cards(num_cards):
 	cards_session = [];
-	all_cards = Card.select().where(Card.id < int(num_cards) + 1)
+	all_cards = Card.select().where(Card.id <= int(num_cards))
 	for card in all_cards:
 		cards_session.append(card)
 	shuffle(cards_session)
@@ -178,7 +178,8 @@ def begin_session():
 			                      
 	''')
 
-	if int(num_cards) > total_cards:
+	# num_cards converted to integer in check_for_integer
+	if num_cards > total_cards:
 		invalid_msg = f'''
 			---------------------------------------------
 			                  Error
