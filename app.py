@@ -2,7 +2,6 @@ import random
 from model import *
 
 total_cards = Card.select().count()
-print(total_cards)
 
 def goodbye():
 	goodbye_msg = f'''
@@ -143,40 +142,59 @@ def shuffle(cards_session):
 #/shuffle()
 
 def get_cards(num_cards):
-	if int(num_cards) > total_cards:
-		invalid_msg = f'''
-			---------------------------------------------
-			                 Error
-			        There are {total_cards} flash cards.
-			       Please provide a valid number.
-			---------------------------------------------
-		'''
-		print(invalid_msg)
-		begin_session()
-	else:
-		cards_session = [];
-		all_cards = Card.select().where(Card.id < int(num_cards) + 1)
-		for card in all_cards:
-			cards_session.append(card)
-		shuffle(cards_session)
+	cards_session = [];
+	all_cards = Card.select().where(Card.id < int(num_cards) + 1)
+	for card in all_cards:
+		cards_session.append(card)
+	shuffle(cards_session)
 #/get_cards()
 
+# Validate that input is integer: https://www.101computing.net/number-only/
+def check_for_integer(msg):
+	while True:
+		try: 
+			user_input = int(input(msg))
+		except ValueError:
+			not_number_msg = f'''
+			---------------------------------------------
+			                   Error
+			           Please provide numbers.
+			---------------------------------------------
+			'''
+			print(not_number_msg)
+			continue
+		else:
+			return user_input
+			break
+#/check_for_integer()
+
 def begin_session():
-	num_cards = input(f'''
+	num_cards = check_for_integer(f'''
 			       How many flash cards would you 
 			       like for this practice session? 
 			       Enter a number between 1 and {total_cards}
 			---------------------------------------------
 			                      
 	''')
+
 	if num_cards == "" or num_cards == " ":
 		num_cards = total_cards
-
-	retrieving_msg = f'''
+	elif int(num_cards) > total_cards:
+		invalid_msg = f'''
+			---------------------------------------------
+			                  Error
+			         There are {total_cards} flash cards.
+			        Please provide a valid number.
+			---------------------------------------------
+		'''
+		print(invalid_msg)
+		begin_session()
+	else:
+		retrieving_msg = f'''
 			---------------------------------------------
 			      Retrieving {num_cards} flash cards
 			---------------------------------------------
-	'''
+		'''
 	print(retrieving_msg)
 	get_cards(num_cards)
 #/begin_session()
