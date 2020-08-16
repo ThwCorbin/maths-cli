@@ -169,6 +169,7 @@ def check_for_integer(msg):
 #/check_for_integer()
 
 def begin_session():
+	# Validate input
 	num_cards = check_for_integer(f'''
 			       How many flash cards would you 
 			       like for this practice session? 
@@ -177,9 +178,7 @@ def begin_session():
 			                      
 	''')
 
-	if num_cards == "" or num_cards == " ":
-		num_cards = total_cards
-	elif int(num_cards) > total_cards:
+	if int(num_cards) > total_cards:
 		invalid_msg = f'''
 			---------------------------------------------
 			                  Error
@@ -195,8 +194,8 @@ def begin_session():
 			      Retrieving {num_cards} flash cards
 			---------------------------------------------
 		'''
-	print(retrieving_msg)
-	get_cards(num_cards)
+		print(retrieving_msg)
+		get_cards(num_cards)
 #/begin_session()
 
 def main():
