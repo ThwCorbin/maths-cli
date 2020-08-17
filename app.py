@@ -29,6 +29,16 @@ def check_correct_product(msg):
 			else:
 				continue
 		except ValueError:
+			not_number_msg = f'''
+			---------------------------------------------
+			                   Error
+			        Please provide three numbers.
+			
+			       The first two numbers multiplied
+			         must equal the third number.
+			---------------------------------------------
+			'''
+			print(not_number_msg)
 			continue
 #/check_for_integer()
 
