@@ -29,21 +29,7 @@ def check_correct_product(msg):
 			else:
 				continue
 		except ValueError:
-			not_number_msg = f'''
-			---------------------------------------------
-			                   Error
-			        Please provide three numbers
-			       separated by commas like this:
-			
-			                 13, 3, 39
-			
-			      The first two numbers multiplied
-			         must equal the third number
-			---------------------------------------------
-			'''
-			print(not_number_msg)
 			continue
-
 #/check_for_integer()
 
 def add_card():
@@ -62,8 +48,6 @@ def add_card():
 
 			---------------------------------------------
 	'''
-	# add_card_value = input(add_card_msg)
-	# new_card_arr = add_card_value.replace(" ", "").split(",")
 	new_card_arr = check_correct_product(add_card_msg)
 
 	series = int(new_card_arr[0])
