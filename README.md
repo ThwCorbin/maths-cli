@@ -8,6 +8,8 @@ Repo: https://github.com/ThwCorbin/maths-cli
 
 User runs the Maths-cli app in their terminal to practice the multiplication table (factors 1 through 12). User sets up a practice session with all 144 "flash cards" or selects a subset of cards. User can add multiplicaton flash cards to the database after user's first practice session.
 
+![Maths-cli screenshot](./maths-cli-screenshot.png "Maths-cli command line application")
+
 This is my ninth project for [General Assembly's](https://generalassemb.ly/ "General Assembly homepage") Software Engineering Immersive program.
 
 ## Technologies
