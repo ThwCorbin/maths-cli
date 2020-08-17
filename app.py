@@ -15,11 +15,43 @@ def goodbye():
 	'''
 	print(goodbye_msg)
 
+# Validate that input is three integers: https://www.101computing.net/number-only/
+# Validate that the two factors result in the correct product
+def check_correct_product(msg):
+	while True:
+		try: 
+			add_card_value = input(msg)
+			new_card_arr = add_card_value.replace(" ", "").split(",")
+			user_input = [int(new_card_arr[0]), int(new_card_arr[1]), int(new_card_arr[2])]
+			if user_input[0] * user_input[1] == user_input[2]:
+				return user_input
+				break
+			else:
+				continue
+		except ValueError:
+			not_number_msg = f'''
+			---------------------------------------------
+			                   Error
+			        Please provide three numbers
+			       separated by commas like this:
+			
+			                 13, 3, 39
+			
+			      The first two numbers multiplied
+			         must equal the third number
+			---------------------------------------------
+			'''
+			print(not_number_msg)
+			continue
+
+#/check_for_integer()
+
 def add_card():
 	add_card_msg = f'''
 			---------------------------------------------
-			      Enter two numbers to multiply and
-			      their product separated by commas.
+			        Enter two numbers to multiply
+			     together and their product separated
+			                 by commas.
 
 			      The database already has questions
 			      for numbers 1 through 12. Consider
@@ -30,8 +62,9 @@ def add_card():
 
 			---------------------------------------------
 	'''
-	add_card_value = input(add_card_msg)
-	new_card_arr = add_card_value.replace(" ", "").split(",")
+	# add_card_value = input(add_card_msg)
+	# new_card_arr = add_card_value.replace(" ", "").split(",")
+	new_card_arr = check_correct_product(add_card_msg)
 
 	series = int(new_card_arr[0])
 	question = f"{new_card_arr[0]} x {new_card_arr[1]}"
