@@ -1,4 +1,4 @@
-# Maths-CLI
+# Maths-cli
 
 A Python command line application, which provides mathematics flash cards to help a user practice multiplication.
 
