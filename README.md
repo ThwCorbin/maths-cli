@@ -26,7 +26,7 @@ I developed a bronze/silver/gold plan, which is available in the planning direct
 
 - Clone the repo
 - `cd` to the maths-cli directory
-- Install dependencies in the Pipfile with pipenv
+- Install dependencies in the Pipfile with `pipenv install`
 - Enter `pipenv shell` in the terminal to create a virtual environment
 - Open a separate terminal window and enter `psql`
 - At the `=#` prompt, enter `CREATE DATABASE maths;`
